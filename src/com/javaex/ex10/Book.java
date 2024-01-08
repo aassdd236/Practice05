@@ -5,7 +5,6 @@ public class Book {
 	private String title;
 	private String author;
 	private int stateCode;
-	private String code="재고있음";
 	
 	public Book(int bookNo, String title, String author) {
 		super();
@@ -39,14 +38,15 @@ public class Book {
 	}
 
 	public void rent(int num, Book[] books) {
-		for(int i=0; i<10; i++) {
-			if(num==i+1) {
+		for(int i=0; i<books.length; i++) {
+			if(num==books[i].getBookNo()) {
 				books[i].stateCode=0;
 			}
 		}
 	}
 	
 	public void print() {
+		String code="재고있음";
 		if(stateCode==1) {
 			code="재고있음";
 		}else {
