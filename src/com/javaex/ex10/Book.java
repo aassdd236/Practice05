@@ -5,12 +5,14 @@ public class Book {
 	private String title;
 	private String author;
 	private int stateCode;
+	private String code="재고있음";
 	
 	public Book(int bookNo, String title, String author) {
 		super();
 		this.bookNo = bookNo;
 		this.title = title;
 		this.author = author;
+		this.stateCode = 1;
 	}
 	public Book(int bookNo, String title, String author, int stateCode) {
 		this(bookNo, title, author);
@@ -38,20 +40,19 @@ public class Book {
 
 	public void rent(int num, Book[] books) {
 		for(int i=0; i<10; i++) {
-			if(num==i) {
+			if(num==i+1) {
+				books[i].stateCode=0;
 			}
 		}
 	}
 	
 	public void print() {
-		
+		if(stateCode==1) {
+			code="재고있음";
+		}else {
+			code="대여중";
+		}
+		System.out.println(bookNo + " 책 제목:" + title + ", 작가:" + author + ", 대여 유무:" + code);
 	}
-	
-	
-	
-    
-    
-    
-    
-    
 }
+	
